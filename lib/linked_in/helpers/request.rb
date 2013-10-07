@@ -16,7 +16,7 @@ module LinkedIn
           raise_errors(response)
           response.body
         rescue OAuth2::Error => e
-          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.description
+          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.message
         end
 
         def post(path, body='', options={})
@@ -24,7 +24,7 @@ module LinkedIn
           raise_errors(response)
           response
         rescue OAuth2::Error => e
-          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.description
+          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.message
         end
 
         def put(path, body, options={})
@@ -32,7 +32,7 @@ module LinkedIn
           raise_errors(response)
           response
         rescue OAuth2::Error => e
-          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.description
+          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.message
         end
 
         def delete(path, options={})
@@ -40,7 +40,7 @@ module LinkedIn
           raise_errors(response)
           response
         rescue OAuth2::Error => e
-          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.description
+          raise LinkedIn::Errors::AccessDeniedError.new(e.code), e.message
         end
 
       private
