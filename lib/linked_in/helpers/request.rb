@@ -58,11 +58,11 @@ module LinkedIn
           when 403
             raise LinkedIn::Errors::AccessDeniedError.new(data), "(#{data.status}): #{data.message}"
           when 404
-            raise LinkedIn::Errors::NotFoundError, "(#{response.status}): #{data.message}"
+            raise LinkedIn::Errors::NotFoundError.new(data), "(#{response.status}): #{data.message}"
           when 500
-            raise LinkedIn::Errors::InformLinkedInError, "LinkedIn had an internal error. Please let them know in the forum. (#{response.status}): #{data.message}"
+            raise LinkedIn::Errors::InformLinkedInError.new(data), "LinkedIn had an internal error. Please let them know in the forum. (#{response.status}): #{data.message}"
           when 502..503
-            raise LinkedIn::Errors::UnavailableError, "(#{response.status}): #{data.message}"
+            raise LinkedIn::Errors::UnavailableError.new(data), "(#{response.status}): #{data.message}"
           end
         end
 
